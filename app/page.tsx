@@ -50,7 +50,7 @@ export default function Home() {
                   Sage • Xero • QuickBooks Online • Dext
                 </span>
                 <span className="px-3 py-1 rounded-full border border-gray-700 bg-white/5">
-                  100% CPA Sign-Off on Monthly Reports
+                  Quality-Checked Monthly Financial Reports
                 </span>
                 <span className="px-3 py-1 rounded-full border border-gray-700 bg-white/5">
                   Sage • Xero • QuickBooks Online • Dext
@@ -71,7 +71,7 @@ export default function Home() {
                 <li className="flex items-start space-x-2">
                   <span className="mt-1 w-2 h-2 rounded-full bg-green-400" />
                   <span>
-                    Every file is reviewed and signed off by a Practice Director/CPA before anything reaches you or your tax practitioner.
+                    Every file undergoes a structured quality review before it reaches you or your tax practitioner.
                   </span>
                 </li>
                 <li className="flex items-start space-x-2">
@@ -97,7 +97,7 @@ export default function Home() {
               Dual-Layer Quality. Single Point of Accountability.
             </h2>
             <p className="text-gray-600">
-              Your file is never left to a junior on autopilot. Students execute the work; your CPA Director owns the result.
+              Your file is never left on autopilot. Students perform the work using standardized processes, and all deliverables undergo a quality review before delivery.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
@@ -128,7 +128,7 @@ export default function Home() {
                 </span>
               </div>
               <p className="text-sm text-gray-700 mb-3">
-                A senior Practice Director/CPA reviews every file, every month:
+                Every file undergoes a detailed monthly quality review:
               </p>
               <ul className="text-sm text-gray-700 space-y-1.5">
                 <li>• Spot-checks on high‑value and unusual transactions</li>
@@ -185,7 +185,7 @@ export default function Home() {
                 <li>• Up to <strong>R150k</strong> monthly expenses</li>
                 <li>• Monthly bank &amp; credit card reconciliations</li>
                 <li>• Categorisation of income &amp; expenses</li>
-                <li>• Monthly P&amp;L &amp; balance sheet, CPA-reviewed</li>
+                <li>• Monthly P&amp;L &amp; balance sheet, quality-checked</li>
                 <li>• Email support for simple questions</li>
               </ul>
               <a
@@ -274,7 +274,7 @@ export default function Home() {
             <div>
               <h3 className="text-sm font-semibold text-gray-900 mb-1">Role-Based Access</h3>
               <p className="text-sm text-gray-600">
-                Students only see what they need to do their work. CPA Directors maintain full oversight and final control.
+                Students only access the information required to perform their work. Strict access controls and review procedures help protect client data.
               </p>
             </div>
             <div>
@@ -296,26 +296,26 @@ export default function Home() {
           <div className="grid gap-8 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-center">
             <div>
               <h2 className="text-3xl font-semibold text-gray-900 mb-3">
-                Led by a South African CPA Who Signs Off on Every File
+                Student-Led Bookkeeping for South African Businesses
               </h2>
               <p className="text-gray-700 mb-4 text-sm sm:text-base">
-                OMR Precision Books is built on a simple belief: students bring fresh academic rigor, and experienced CPAs bring the judgment that only comes from years in the field.
+                OMR Precision Books is built on a simple belief: strong accounting fundamentals, disciplined processes, and attention to detail create reliable bookkeeping.
               </p>
               <p className="text-gray-700 mb-4 text-sm sm:text-base">
-                Our Practice Director is a South African CPA with professional experience across local small businesses, agencies, 
+               Our processes are designed around the needs of South African small businesses, agencies, and growing companies, 
                 and e‑commerce clients. They personally design the workflows students use, review each month-end close, 
                 and are ultimately responsible for the accuracy of your numbers.
               </p>
               <p className="text-gray-700 text-sm sm:text-base">
-                You’re not “hiring students.” You’re hiring a CPA-led practice that leverages top final-year talent under strict supervision 
-                to deliver reliable, audit-ready books at a price that makes sense for South African businesses.
+                You’re not simply hiring students. You’re partnering with a bookkeeping service that combines accounting knowledge, structured workflows, and quality controls 
+                to deliver reliable financial records at an affordable price.
               </p>
             </div>
             <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-sm text-gray-700">
               <h3 className="text-base font-semibold text-gray-900 mb-2">Why a student-led model works</h3>
               <ul className="space-y-2">
                 <li>• Students are selected based on academic performance and practical aptitude.</li>
-                <li>• They’re given structured checklists and templates refined by our CPA Director.</li>
+                <li>• They work from structured checklists, documented procedures, and standardized templates to ensure consistency.</li>
                 <li>• Their work is not final until it’s reviewed, challenged, and approved by a qualified supervisor.</li>
                 <li>• You benefit from lower costs without sacrificing the accuracy your business and tax practitioner depend on.</li>
               </ul>
@@ -340,8 +340,8 @@ export default function Home() {
                 They handle standardized, process-driven tasks such as coding transactions and performing reconciliations using checklists built on IFRS/IFRS for SMEs principles.
               </p>
               <p className="mt-2 text-sm text-gray-700">
-                A CPA-level Practice Director then reviews your file each month, investigates any unusual balances or transactions, 
-                and only signs off once everything ties out. The student work saves time; the CPA sign-off protects accuracy.
+                Each month, unusual balances, unreconciled items, and significant transactions are reviewed as part of our quality-control process, 
+                and reports are only finalized once discrepancies have been addressed. Our structured review process helps maintain accuracy and consistency.
               </p>
             </details>
 
