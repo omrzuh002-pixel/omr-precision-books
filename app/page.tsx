@@ -11,7 +11,7 @@ export default function Home() {
             </div>
             <div>
               <div className="text-lg font-semibold tracking-tight">OMR Precision Books</div>
-              <div className="text-xs text-gray-300">Student-Led • CPA-Supervised • South Africa</div>
+              <div className="text-xs text-gray-300">Student-Led • South Africa-</div>
             </div>
           </div>
           <div className="hidden md:flex items-center space-x-6 text-sm">
@@ -28,10 +28,10 @@ export default function Home() {
           <div className="max-w-6xl mx-auto px-4 py-16 lg:py-24 grid gap-10 lg:grid-cols-2 items-center">
             <div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
-                CPA-Supervised, Student-Led Bookkeeping for South African Businesses
+                Affordable Bookkeeping for South African Businesses
               </h1>
-              <p className="text-lg text-gray-200 mb-6">
-                Every transaction is prepared by top final-year accounting students and reviewed line-by-line by a CPA. 
+              <p className="text-lg text-gray-200 mb-6">Every transaction is prepared using structured bookkeeping processes designed for accuracy, consistency, and affordability.
+                . 
                 Dual-layer quality control at South African small-business-friendly rates for agencies, e‑commerce brands, and local service providers.
               </p>
               <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-3 sm:space-y-0 mb-6">
@@ -47,13 +47,13 @@ export default function Home() {
               </div>
               <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-gray-300">
                 <span className="px-3 py-1 rounded-full border border-gray-700 bg-white/5">
-                  Xero • QuickBooks Online • Dext
+                  Sage • Xero • QuickBooks Online • Dext
                 </span>
                 <span className="px-3 py-1 rounded-full border border-gray-700 bg-white/5">
                   100% CPA Sign-Off on Monthly Reports
                 </span>
                 <span className="px-3 py-1 rounded-full border border-gray-700 bg-white/5">
-                  Built for South African agencies, e‑com, and local services
+                  Sage • Xero • QuickBooks Online • Dext
                 </span>
               </div>
             </div>
@@ -284,8 +284,8 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <p className="mt-6 text-xs text-gray-500">
-            We work within Xero, QuickBooks Online, and Dext—platforms engineered with bank-grade security and compliance in mind.
+          <p className="mt-6 text-xs texWe work within Sage, Xero, QuickBooks Online, and Dextt-gray-500">
+            —platforms engineered with bank-grade security and compliance in mind.
           </p>
         </div>
       </section>
@@ -350,10 +350,10 @@ export default function Home() {
                 What accounting software do you work with?
               </summary>
               <p className="mt-2 text-sm text-gray-700">
-                We primarily support Xero and QuickBooks Online for core bookkeeping, along with Dext for document capture and expense management.
+                We support Sage, Xero, and QuickBooks Online for bookkeeping, along with Dext for document capture and expense management.
               </p>
               <p className="mt-2 text-sm text-gray-700">
-                If you’re using another tool, we can often migrate you into Xero or QuickBooks Online as part of a one‑time setup or cleanup project.
+                If you're using another accounting system, we can often migrate your data into Sage, Xero, or QuickBooks Online.
               </p>
             </details>
 
@@ -460,7 +460,7 @@ export default function Home() {
                   id="softwareUsed"
                   name="Software Used"
                   type="text"
-                  placeholder="e.g. Xero, QBO, Dext"
+                  placeholder="e.g. Sage, Xero, QuickBooks, Dext"
                   className="w-full px-3 py-2 rounded-md bg-black border border-gray-700 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-green-500"
                 />
               </div>
@@ -505,8 +505,8 @@ export default function Home() {
           </form>
 
           <div className="mt-10 pt-6 border-t border-gray-800 text-xs text-gray-500 flex flex-col sm:flex-row items-center justify-between space-y-2 sm:space-y-0">
-            <span>&copy; 2024 OMR Precision Books. Based in South Africa. All rights reserved.</span>
-            <span>Student-Led • CPA-Supervised • Xero &amp; QuickBooks Online Specialists</span>
+            <span>&copy; 2026 OMR Precision Books. Based in South Africa. All rights reserved.</span>
+            <span>-Student-Led • Sage • Xero • QuickBooks Online Specialists</span>
           </div>
         </div>
       </footer>
