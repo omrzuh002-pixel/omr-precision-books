@@ -333,11 +333,12 @@ export default function Home() {
           <div className="space-y-3">
             <details className="bg-white border border-gray-200 rounded-lg p-4">
               <summary className="cursor-pointer text-sm font-semibold text-gray-900">
-                How do I know my books will be accurate if students are working on them?
+                How do I know my books will be accurate?
               </summary>
               <p className="mt-2 text-sm text-gray-700">
-                Students at OMR Precision Books are not working alone or unsupervised. 
-                They handle standardized, process-driven tasks such as coding transactions and performing reconciliations using checklists built on IFRS/IFRS for SMEs principles.
+                Students at OMR Precision Books perform the bookkeeping work using structured processes, checklists, and documented procedures. 
+                Standardized workflows help ensure transactions are categorized correctly and reconciliations are completed consistently.
+                
               </p>
               <p className="mt-2 text-sm text-gray-700">
                 Each month, unusual balances, unreconciled items, and significant transactions are reviewed as part of our quality-control process, 
