@@ -498,13 +498,22 @@ export default function Home() {
             >
               Submit &amp; Open Email to Request Strategy Call
             </button>
+              <p className="mt-3 text-xs text-gray-400 text-center">
+            
+              Contact us at{" "}
+            <a
 
-            <p className="mt-3 text-xs text-gray-400 text-center">
-              <a
-3
-href="mailto:omrprecisionbooks@gmail.com" We don’t sell or share your information.
+              href="mailto:omrprecisionbooks@gmail.com"
+              className="text-green-400"
+            >
+                omrprecisionbooks@gmail.com
+                </a>
+              </p>
+              <p className="mt-2 text-xs text-gray-400 text-center">
+              We don't sell or share your information.
             </p>
-          </form>
+
+            </form>
 
           <div className="mt-10 pt-6 border-t border-gray-800 text-xs text-gray-500 flex flex-col sm:flex-row items-center justify-between space-y-2 sm:space-y-0">
             <span>&copy; 2026 OMR Precision Books. Based in South Africa. All rights reserved.</span>
