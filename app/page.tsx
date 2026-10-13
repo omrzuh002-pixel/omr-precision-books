@@ -19,11 +19,11 @@ export default function Home() {
             <a href="#pricing" className="hover:text-green-300">Pricing</a>
             <a href="#faq" className="hover:text-green-300">FAQ</a>
             <a 
-              href="https://calendly.com/omrprecisionbooks/free-15-minute-bookkeeping-strategy-call">
-              target="_blank       
+              href="https://calendly.com/omrprecisionbooks/free-15-minute-bookkeeping-strategy-call"
+              target="_blank"       
               rel="noopener noreferrer"
               className="hover:text-green-300"
-            
+            >
               Book a 15-Min Strategy Call
             </a>
           </div>
