@@ -399,10 +399,11 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center mb-8">
             <h2 className="text-3xl font-semibold mb-3">
-              Book Your 15-Min Strategy Call (South Africa)
+              Book a Free 15-Minute Bookkeeping Strategy Call
             </h2>
             <p className="text-sm text-gray-300">
-              Tell us a bit about your business, and your email client will open with your details pre-filled so we can arrange a quick call.
+              Book a free strategy call using Calendly, or send us an enquiry and we'll get back to you.
+
             </p>
           </div>
 
@@ -504,7 +505,7 @@ export default function Home() {
               type="submit"
               className="w-full mt-2 py-2.5 rounded-md bg-green-500 hover:bg-green-600 text-sm font-semibold text-white"
             >
-              Submit &amp; Open Email to Request Strategy Call
+              Send Enquiry
             </button>
               <p className="mt-3 text-xs text-gray-400 text-center">
             
