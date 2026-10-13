@@ -500,7 +500,9 @@ export default function Home() {
             </button>
 
             <p className="mt-3 text-xs text-gray-400 text-center">
-              Your details will appear in an email draft so you can review and send. We don’t sell or share your information.
+              <a
+3
+href="mailto:omrprecisionbooks@gmail.com" We don’t sell or share your information.
             </p>
           </form>
 
