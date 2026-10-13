@@ -35,9 +35,7 @@ export default function Home() {
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
                 Affordable Bookkeeping for South African Businesses
               </h1>
-              <p className="text-lg text-gray-200 mb-6">Every transaction is prepared using structured bookkeeping processes designed for accuracy, consistency, and affordability.
-                . 
-                Dual-layer quality control at South African small-business-friendly rates for agencies, e‑commerce brands, and local service providers.
+              <p className="text-lg text-gray-200 mb-6">Every transaction is prepared using structured bookkeeping processes designed for accuracy, consistency, and affordability.Dual-layer quality control at South African small-business-friendly rates for agencies, e‑commerce brands, and local service providers.
               </p>
               <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-3 sm:space-y-0 mb-6">
                 <a
@@ -60,13 +58,13 @@ export default function Home() {
                   Quality-Checked Monthly Financial Reports
                 </span>
                 <span className="px-3 py-1 rounded-full border border-gray-700 bg-white/5">
-                  Sage • Xero • QuickBooks Online • Dext
+                  Reconciliations • Reporting • VAT Support
                 </span>
               </div>
             </div>
             <div className="bg-white/5 border border-gray-700 rounded-xl p-6 sm:p-8 space-y-6">
               <h2 className="text-xl font-semibold mb-2">
-                Academic rigor. Firm‑level oversight. Local pricing in Rands.
+                Structured Processes. Reliable Reporting. Local Pricing in Rands.
               </h2>
               <ul className="space-y-3 text-sm text-gray-100">
                 <li className="flex items-start space-x-2">
