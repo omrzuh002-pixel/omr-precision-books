@@ -94,7 +94,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center mb-10">
             <h2 className="text-3xl font-semibold text-gray-900 mb-3">
-              Dual-Layer Quality. Single Point of Accountability.
+              Structured Processes. Consistent Results.
             </h2>
             <p className="text-gray-600">
               Your file is never left on autopilot. Students perform the work using standardized processes, and all deliverables undergo a quality review before delivery.
@@ -115,14 +115,14 @@ export default function Home() {
               <ul className="text-sm text-gray-700 space-y-1.5">
                 <li>• Importing and coding bank and credit card feeds</li>
                 <li>• Vendor/customer matching and cleanup</li>
-                <li>• Reconciliations performed under IFRS/IFRS for SMEs</li>
+                <li>• Reconciliations performed using accepted bookkeeping and financial reporting practices</li>
                 <li>• Support docs attached via Dext or your chosen workflow</li>
               </ul>
             </div>
             {/* Step 2 */}
             <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
               <div className="flex items-center justify-between mb-3">
-                <h3 className="text-lg font-semibold text-gray-900">Step 2: Supervisory Audit</h3>
+                <h3 className="text-lg font-semibold text-gray-900">Step 2: Quality Review </h3>
                 <span className="text-xs font-semibold px-2 py-1 rounded-full bg-gray-100 text-gray-800 border border-gray-200">
                   Oversight
                 </span>
@@ -134,7 +134,7 @@ export default function Home() {
                 <li>• Spot-checks on high‑value and unusual transactions</li>
                 <li>• Balance sheet and P&amp;L reviewed down to the cent</li>
                 <li>• VAT-sensitive items flagged and categorised correctly</li>
-                <li>• Sign-off only after variances and questions are resolved</li>
+                <li>• Reports finalised only after variances and questions are resolved</li>
               </ul>
             </div>
             {/* Step 3 */}
@@ -149,7 +149,7 @@ export default function Home() {
                 You receive clean, decision-ready financials:
               </p>
               <ul className="text-sm text-gray-700 space-y-1.5">
-                <li>• Audit-ready balance sheet and income statement</li>
+                <li>• Accurate balance sheet and income statement</li>
                 <li>• Basic VAT and tax-compliance sanity checks each month</li>
                 <li>• Simple management summary in plain English</li>
                 <li>• Optional call to walk through your numbers and trends</li>
