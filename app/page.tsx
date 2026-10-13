@@ -405,122 +405,31 @@ export default function Home() {
             </p>
           </div>
 
-          {/* MAILTO FORM */}
-          <form
-            className="max-w-xl mx-auto bg-gray-900 border border-gray-800 rounded-xl p-6 space-y-4"
-            action="mailto:you@omrprecisionbooks@gmail.com"
-            method="POST"
-            encType="text/plain"
-          >
-            {/* Replace the email above with your real address */}
-
-            <div className="grid gap-4 md:grid-cols-2">
-              <div>
-                <label className="block text-xs font-semibold text-gray-300 mb-1" htmlFor="name">
-                  Name
-                </label>
-                <input
-                  id="name"
-                  name="Name"
-                  type="text"
-                  required
-                  className="w-full px-3 py-2 rounded-md bg-black border border-gray-700 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-green-500"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-semibold text-gray-300 mb-1" htmlFor="businessName">
-                  Business Name
-                </label>
-                <input
-                  id="businessName"
-                  name="Business Name"
-                  type="text"
-                  required
-                  className="w-full px-3 py-2 rounded-md bg-black border border-gray-700 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-green-500"
-                />
-              </div>
-            </div>
-
-            <div className="grid gap-4 md:grid-cols-2">
-              <div>
-                <label className="block text-xs font-semibold text-gray-300 mb-1" htmlFor="monthlyExpenseRange">
-                  Monthly Expense Range
-                </label>
-                <select
-                  id="monthlyExpenseRange"
-                  name="Monthly Expense Range"
-                  required
-                  className="w-full px-3 py-2 rounded-md bg-black border border-gray-700 text-sm text-white focus:outline-none focus:border-green-500"
-                >
-                  <option value="">Select a range</option>
-                  <option value="0-150k">Up to R150k / month</option>
-                  <option value="150k-500k">R150k – R500k / month</option>
-                  <option value="500k-1m">R500k – R1m / month</option>
-                  <option value="1m-plus">R1m+ / month</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-xs font-semibold text-gray-300 mb-1" htmlFor="softwareUsed">
-                  Software Used
-                </label>
-                <input
-                  id="softwareUsed"
-                  name="Software Used"
-                  type="text"
-                  placeholder="e.g. Sage, Xero, QuickBooks, Dext"
-                  className="w-full px-3 py-2 rounded-md bg-black border border-gray-700 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-green-500"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-gray-300 mb-1" htmlFor="email">
-                Email
-              </label>
-              <input
-                id="email"
-                name="Email"
-                type="email"
-                required
-                className="w-full px-3 py-2 rounded-md bg-black border border-gray-700 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-green-500"
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-gray-300 mb-1" htmlFor="notes">
-                Anything else we should know?
-              </label>
-              <textarea
-                id="notes"
-                name="Notes"
-                rows={3}
-                placeholder="How far behind are your books? What type of business do you run?"
-                className="w-full px-3 py-2 rounded-md bg-black border border-gray-700 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-green-500"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full mt-2 py-2.5 rounded-md bg-green-500 hover:bg-green-600 text-sm font-semibold text-white"
-            >
-              Send Enquiry
-            </button>
-              <p className="mt-3 text-xs text-gray-400 text-center">
-            
-              Contact us at{" "}
-            <a
-
-              href="mailto:omrprecisionbooks@gmail.com"
-              className="text-green-400"
-            >
-                omrprecisionbooks@gmail.com
-                </a>
-              </p>
-              <p className="mt-2 text-xs text-gray-400 text-center">
-              We don't sell or share your information.
+          <div className="max-w-xl mx-auto bg-gray-900 border border-gray-800 rounded-xl p-6 text-center">
+            <p className="text-gray-300 mb-6">
+               Book a free 15-minute bookkeeping strategy call, or contact us directly by email.
             </p>
 
-            </form>
+          <a
+          href="https://calendly.com/omrprecisionbooks/free-15-minute-bookkeeping-strategy-call"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-6 py-3 rounded-md bg-green-500 hover:bg-green-600 text-white font-semibold"
+          >
+          Book a Free Strategy Call
+          </a>
+
+          <p className="mt-6 text-sm text-gray-400">
+            Prefer email?
+          </p>
+
+          <a
+        href="mailto:omrprecisionbooks@gmail.com"
+          className="text-green-400 hover:underline"
+          >
+          omrprecisionbooks@gmail.com
+            </a>
+          </div>
 
           <div className="mt-10 pt-6 border-t border-gray-800 text-xs text-gray-500 flex flex-col sm:flex-row items-center justify-between space-y-2 sm:space-y-0">
             <span>&copy; 2026 OMR Precision Books. Based in South Africa. All rights reserved.</span>
