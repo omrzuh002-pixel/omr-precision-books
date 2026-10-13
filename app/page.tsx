@@ -18,7 +18,12 @@ export default function Home() {
             <a href="#how-it-works" className="hover:text-green-300">How It Works</a>
             <a href="#pricing" className="hover:text-green-300">Pricing</a>
             <a href="#faq" className="hover:text-green-300">FAQ</a>
-            <a href="#contact" className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium">
+            <a 
+              href="https://calendly.com/omrprecisionbooks/free-15-minute-bookkeeping-strategy-call">
+              target="_blank       
+              rel="noopener noreferrer"
+              className="hover:text-green-300"
+            
               Book a 15-Min Strategy Call
             </a>
           </div>
@@ -36,8 +41,10 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-3 sm:space-y-0 mb-6">
                 <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-green-500 hover:bg-green-600 text-white text-base font-semibold rounded-md shadow"
+                  href="https://calendly.com/omrprecisionbooks/free-15-minute-bookkeeping-strategy-call"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-green-500 hover:bg-green-600 text-white text-base"
                 >
                   Book a 15-Min Strategy Call
                 </a>
