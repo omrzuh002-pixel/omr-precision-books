@@ -1,440 +1,675 @@
-// pages/index.js
-export default function Home() {
+// app/page.tsx
+//
+// Items marked VERIFY must be confirmed as true before this goes live.
+// Do not publish a claim you cannot back up.
+
+const CALENDLY_URL =
+  "https://calendly.com/omrprecisionbooks/free-15-minute-bookkeeping-strategy-call";
+// TODO: switch to a domain email (e.g. hello@yourdomain.co.za) once you have one.
+const CONTACT_EMAIL = "omrprecisionbooks@gmail.com";
+
+const focusDark =
+  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400";
+const focusLight =
+  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700";
+
+function CallButton({
+  children,
+  tone,
+  className = "",
+}: {
+  children: React.ReactNode;
+  tone: "onDark" | "onLight";
+  className?: string;
+}) {
+  const styles =
+    tone === "onDark"
+      ? `bg-green-500 text-black hover:bg-green-400 ${focusDark}`
+      : `bg-black text-white hover:bg-gray-800 ${focusLight}`;
   return (
-    <div className="bg-white text-gray-800 font-sans">
-      {/* HEADER / HERO */}
+    <a
+      href={CALENDLY_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-flex items-center justify-center rounded-md px-6 py-3 text-base font-semibold ${styles} ${className}`}
+    >
+      {children}
+    </a>
+  );
+}
+
+const goodFit = [
+  "Run a small business, such as a service provider, online store or agency, with a manageable number of monthly transactions",
+  "Can send bank statements and supporting documents by a set date each month",
+  "Want accurate records and clear monthly reports",
+];
+
+const notFit = [
+  "Need tax returns, SARS submissions, tax advice, payroll, audit or assurance work",
+  "Need same-day responses or daily bookkeeping",
+  "Have a very large or complex set of records",
+];
+
+const steps = [
+  {
+    title: "Intro call",
+    body: "We talk through your business, your records and what you need, and decide together whether we’re a good fit.",
+  },
+  {
+    title: "Quote and agreement",
+    body: "You receive a written scope, price and agreement before any work starts.",
+  },
+  {
+    title: "Onboarding",
+    body: "We set up secure document sharing, software access and a monthly document deadline.",
+  },
+  {
+    // VERIFY: confirm you can reliably meet a 10 business day turnaround
+    // in term time and exam periods.
+    title: "Monthly cycle",
+    body: "You send your documents by the agreed date. I complete the books and send your reports within 10 business days of receiving complete documents.",
+  },
+];
+
+const included = [
+  "Capturing and categorising bank and card transactions",
+  "Bank and card reconciliations",
+  "Matching the supporting documents you supply",
+  "Monthly management reports",
+  "Catch-up bookkeeping, quoted separately",
+];
+
+const notOffered = [
+  "Tax returns and SARS submissions",
+  "Tax advice",
+  "Payroll (for now)",
+  "Audit, review or independent assurance",
+  "Annual financial statements and CIPC filings",
+];
+
+type Plan = {
+  name: string;
+  tagline: string;
+  price: string;
+  unit?: string;
+  meta: string;
+  features: string[];
+  cta: string;
+};
+
+// Prices are provisional. Rebuild them from real time-per-client data
+// (see the pricing work in Phase 5) before relying on them.
+const plans: Plan[] = [
+  {
+    name: "Essential",
+    tagline: "For sole proprietors and small companies with simple records",
+    price: "R2,500",
+    unit: "/month",
+    meta: "Month-to-month",
+    features: [
+      "Up to 100 bank and card transactions a month",
+      "1 to 2 bank or card accounts",
+      "Capturing, categorising and reconciling",
+      "Supporting documents matched where supplied",
+      "Monthly profit and loss, balance sheet and list of open queries",
+      "Email support, replies within 1 to 2 business days",
+    ],
+    cta: "Discuss Essential",
+  },
+  {
+    name: "Standard",
+    tagline: "For small businesses with more activity",
+    price: "R3,900",
+    unit: "/month",
+    meta: "Month-to-month",
+    features: [
+      "Up to 250 bank and card transactions a month",
+      "Up to 3 bank or card accounts",
+      "Everything in Essential",
+      "Debtors and creditors listings",
+      "A 20-minute monthly review call",
+    ],
+    cta: "Discuss Standard",
+  },
+  {
+    name: "Catch-up and clean-up",
+    tagline: "For businesses that have fallen behind on their books",
+    price: "Quoted",
+    meta: "After I’ve looked at your records",
+    features: [
+      "A review of your records before any quote is given",
+      "A fixed quote based on estimated hours",
+      "Best suited to a few months of backlog",
+      "Larger or more complex backlogs may be referred to another professional",
+      "Afterwards you can move onto a monthly plan",
+    ],
+    cta: "Ask about catch-up",
+  },
+];
+
+const faqs: { q: string; a: string[] }[] = [
+  {
+    q: "Are you a qualified accountant?",
+    a: [
+      "No. I’m a third-year accounting student at the University of Cape Town and I don’t hold a professional accounting designation. I provide bookkeeping, not tax, audit or assurance services. If your situation needs a registered professional, I’ll tell you.",
+    ],
+  },
+  {
+    q: "Why choose a student-run business?",
+    a: [
+      "You get one person who personally handles your books, a defined scope and transparent pricing. In return, you’re working with someone early in their career. That’s why I limit how many clients I take on and say plainly what I do and don’t do.",
+      "If you need a firm with a team and professional sign-off, I’ll tell you so.",
+    ],
+  },
+  {
+    q: "Who does the work?",
+    a: [
+      "I do, personally. If I bring other students on as the business grows, I’ll tell you before anyone else works on your records.",
+    ],
+  },
+  {
+    q: "What software do you use?",
+    // VERIFY: only keep the Xero / QuickBooks sentence if you are genuinely
+    // comfortable doing client work in those systems.
+    a: [
+      "Primarily Sage. I can discuss working in Xero or QuickBooks Online case by case, but only where I’m confident I can do the work properly.",
+      "You pay for your own software subscription, and I work in your account with the access you give me.",
+    ],
+  },
+  {
+    q: "Do you do VAT or tax returns?",
+    // VERIFY: confirm the tax-practitioner boundary before publishing (Phase 3).
+    a: [
+      "No. I don’t prepare or submit VAT or tax returns, and I don’t give tax advice. If you’re VAT-registered, I can keep your VAT records tidy in the ledger so that you or a registered tax practitioner can work from them.",
+      "If you need returns or advice, you’ll need a registered tax practitioner.",
+    ],
+  },
+  {
+    q: "Do you do payroll?",
+    a: ["Not currently."],
+  },
+  {
+    q: "How do I send my documents?",
+    a: [
+      "Through a secure shared folder that we set up during onboarding. You send what’s needed by the agreed date each month.",
+    ],
+  },
+  {
+    q: "What if I’m months behind on my bookkeeping?",
+    a: [
+      "That’s common. I’ll start with a look at your records, estimate the time involved, and give you a quote before any work begins. Once you’re caught up, you can move onto a monthly plan.",
+    ],
+  },
+  {
+    q: "What if you make a mistake?",
+    a: [
+      "I’ll tell you, correct it, and explain what happened and what I’ve changed to prevent it happening again.",
+    ],
+  },
+  {
+    q: "How quickly do you respond?",
+    // VERIFY: only promise what you can keep during exams.
+    a: [
+      "Within 1 to 2 business days. During my exam periods this may take a little longer, and I’ll tell you in advance when that applies.",
+    ],
+  },
+  {
+    q: "Can I cancel?",
+    // VERIFY: align with your engagement agreement.
+    a: [
+      "Yes. Plans are month-to-month, and I ask for 30 days’ written notice. The details will be in your engagement agreement.",
+    ],
+  },
+];
+
+export default function Home() {
+  // Hard-coded on purpose: with Cache Components enabled in next.config.ts,
+  // calling new Date() in a Server Component can fail the build.
+  // Update this each January.
+  const year = 2026;
+
+  return (
+    <div className="bg-white font-sans text-gray-800">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-black"
+      >
+        Skip to content
+      </a>
+
+      {/* HEADER */}
       <header className="bg-black text-white">
-        <div className="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-5">
           <div className="flex items-center space-x-2">
-            <div className="w-9 h-9 rounded-full bg-green-500 flex items-center justify-center text-sm font-semibold">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-500 text-xs font-bold tracking-tight text-black">
               OMR
             </div>
             <div>
-              <div className="text-lg font-semibold tracking-tight">OMR Precision Books</div>
-              <div className="text-xs text-gray-300">Student-Led • South Africa-</div>
+              <div className="text-lg font-semibold tracking-tight">
+                OMR Precision Books
+              </div>
+              <div className="text-xs text-gray-300">
+                Founder-operated, South Africa
+              </div>
             </div>
           </div>
-          <div className="hidden md:flex items-center space-x-6 text-sm">
-            <a href="#how-it-works" className="hover:text-green-300">How It Works</a>
-            <a href="#pricing" className="hover:text-green-300">Pricing</a>
-            <a href="#faq" className="hover:text-green-300">FAQ</a>
-            <a 
-              href="https://calendly.com/omrprecisionbooks/free-15-minute-bookkeeping-strategy-call"
-              target="_blank"       
-              rel="noopener noreferrer"
-              className="hover:text-green-300"
+          <nav
+            aria-label="Main"
+            className="flex items-center space-x-6 text-sm"
+          >
+            <a
+              href="#how-it-works"
+              className={`hidden hover:text-green-300 md:inline ${focusDark}`}
             >
-              Book a 15-Min Strategy Call
+              How it works
             </a>
-          </div>
+            <a
+              href="#pricing"
+              className={`hidden hover:text-green-300 md:inline ${focusDark}`}
+            >
+              Pricing
+            </a>
+            <a
+              href="#about"
+              className={`hidden hover:text-green-300 md:inline ${focusDark}`}
+            >
+              About
+            </a>
+            <a
+              href="#faq"
+              className={`hidden hover:text-green-300 md:inline ${focusDark}`}
+            >
+              FAQ
+            </a>
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`rounded-md bg-green-500 px-4 py-2 font-semibold text-black hover:bg-green-400 ${focusDark}`}
+            >
+              Book a call
+            </a>
+          </nav>
         </div>
+      </header>
 
-        <section className="border-t border-gray-800">
-          <div className="max-w-6xl mx-auto px-4 py-16 lg:py-24 grid gap-10 lg:grid-cols-2 items-center">
+      <main id="main">
+        {/* HERO */}
+        <section className="bg-black text-white">
+          <div className="mx-auto grid max-w-6xl items-center gap-10 border-t border-gray-800 px-4 py-16 lg:grid-cols-2 lg:py-24">
             <div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
-                Affordable Bookkeeping for South African Businesses
+              <h1 className="mb-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+                Clear, organised monthly bookkeeping for South African small
+                businesses
               </h1>
-              <p className="text-lg text-gray-200 mb-6">Every transaction is prepared using structured bookkeeping processes designed for accuracy, consistency, and affordability.Dual-layer quality control at South African small-business-friendly rates for agencies, e‑commerce brands, and local service providers.
+              <p className="mb-6 max-w-xl text-lg text-gray-200">
+                Run personally by Zuhayr Omar, a UCT accounting student. Defined
+                scope, transparent pricing, and one person who knows your books.
               </p>
-              <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-3 sm:space-y-0 mb-6">
-                <a
-                  href="https://calendly.com/omrprecisionbooks/free-15-minute-bookkeeping-strategy-call"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-green-500 hover:bg-green-600 text-white text-base"
+              <div className="mb-3 flex flex-col space-y-3 sm:flex-row sm:items-center sm:space-x-4 sm:space-y-0">
+                <CallButton
+                  tone="onDark"
+                  className="text-center sm:shrink-0 sm:whitespace-nowrap"
                 >
-                  Book a 15-Min Strategy Call
-                </a>
+                  Book a free 15-minute intro call
+                </CallButton>
                 <p className="text-sm text-gray-300">
-                  No obligation. We’ll review your current books and outline a clear, simple next step.
+                  A short call to see whether we’re a good fit. No obligation.
                 </p>
               </div>
-              <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-gray-300">
-                <span className="px-3 py-1 rounded-full border border-gray-700 bg-white/5">
-                  Sage • Xero • QuickBooks Online • Dext
-                </span>
-                <span className="px-3 py-1 rounded-full border border-gray-700 bg-white/5">
-                  Quality-Checked Monthly Financial Reports
-                </span>
-                <span className="px-3 py-1 rounded-full border border-gray-700 bg-white/5">
-                  Reconciliations • Reporting • VAT Support
-                </span>
-              </div>
-            </div>
-            <div className="bg-white/5 border border-gray-700 rounded-xl p-6 sm:p-8 space-y-6">
-              <h2 className="text-xl font-semibold mb-2">
-                Structured Processes. Reliable Reporting. Local Pricing in Rands.
-              </h2>
-              <ul className="space-y-3 text-sm text-gray-100">
-                <li className="flex items-start space-x-2">
-                  <span className="mt-1 w-2 h-2 rounded-full bg-green-400" />
-                  <span>
-                    Daily feeds and reconciliations handled by carefully selected final-year accounting students trained on IFRS for SMEs and South African tax considerations.
-                  </span>
+              {/* VERIFY: keep this line true. Remove it when you are full. */}
+              <p className="mb-6 text-sm text-gray-300">
+                Currently taking on a small number of new clients.
+              </p>
+              <ul className="flex flex-wrap items-center gap-3 text-xs text-gray-300 sm:text-sm">
+                <li className="rounded-full border border-gray-700 bg-white/5 px-3 py-1">
+                  Works in Sage; Xero and QuickBooks Online by arrangement
                 </li>
-                <li className="flex items-start space-x-2">
-                  <span className="mt-1 w-2 h-2 rounded-full bg-green-400" />
-                  <span>
-                    Every file undergoes a structured quality review before it reaches you or your tax practitioner.
-                  </span>
+                <li className="rounded-full border border-gray-700 bg-white/5 px-3 py-1">
+                  Monthly management reports
                 </li>
-                <li className="flex items-start space-x-2">
-                  <span className="mt-1 w-2 h-2 rounded-full bg-green-400" />
-                  <span>
-                    Clear monthly summaries so you know your cash, profit, VAT position, and runway in minutes—not hours.
-                  </span>
+                <li className="rounded-full border border-gray-700 bg-white/5 px-3 py-1">
+                  Founder-operated
                 </li>
               </ul>
-              <div className="text-xs text-gray-300">
-                Based in South Africa and focused on local compliance, while following international best practices in bookkeeping.
+            </div>
+
+            <div className="space-y-5 rounded-xl border border-gray-700 bg-white/5 p-6 sm:p-8">
+              <h2 className="text-xl font-semibold">
+                What you receive each month
+              </h2>
+              <ul className="space-y-3 text-sm text-gray-100">
+                {[
+                  "Bank and card transactions captured and categorised",
+                  "Bank accounts reconciled to your statements",
+                  "Profit and loss, balance sheet and a list of open queries",
+                  "A short plain-English note on anything unusual",
+                ].map((item) => (
+                  <li key={item} className="flex items-start space-x-2">
+                    <span
+                      aria-hidden="true"
+                      className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-green-400"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-xs text-gray-300">
+                These are management reports. They are not audited or reviewed
+                financial statements.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FIT */}
+        <section className="bg-gray-50 py-16">
+          <div className="mx-auto max-w-5xl px-4">
+            <h2 className="mb-8 text-center text-3xl font-semibold text-gray-900">
+              Is this a good fit?
+            </h2>
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="rounded-xl border border-gray-200 bg-white p-6">
+                <h3 className="mb-3 text-lg font-semibold text-gray-900">
+                  This works well if you
+                </h3>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  {goodFit.map((item) => (
+                    <li key={item}>• {item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-xl border border-gray-200 bg-white p-6">
+                <h3 className="mb-3 text-lg font-semibold text-gray-900">
+                  This is probably not for you if you
+                </h3>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  {notFit.map((item) => (
+                    <li key={item}>• {item}</li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
         </section>
-      </header>
 
-      {/* DUAL-LAYER QUALITY MODEL */}
-      <section id="how-it-works" className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center mb-10">
-            <h2 className="text-3xl font-semibold text-gray-900 mb-3">
-              Structured Processes. Consistent Results.
-            </h2>
-            <p className="text-gray-600">
-              Your file is never left on autopilot. Students perform the work using standardized processes, and all deliverables undergo a quality review before delivery.
-            </p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {/* Step 1 */}
-            <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-lg font-semibold text-gray-900">Step 1: Student Preparation</h3>
-                <span className="text-xs font-semibold px-2 py-1 rounded-full bg-green-50 text-green-700 border border-green-100">
-                  Execution
-                </span>
-              </div>
-              <p className="text-sm text-gray-700 mb-3">
-                Top final-year accounting students handle the heavy lifting:
-              </p>
-              <ul className="text-sm text-gray-700 space-y-1.5">
-                <li>• Importing and coding bank and credit card feeds</li>
-                <li>• Vendor/customer matching and cleanup</li>
-                <li>• Reconciliations performed using accepted bookkeeping and financial reporting practices</li>
-                <li>• Support docs attached via Dext or your chosen workflow</li>
-              </ul>
-            </div>
-            {/* Step 2 */}
-            <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-lg font-semibold text-gray-900">Step 2: Quality Review </h3>
-                <span className="text-xs font-semibold px-2 py-1 rounded-full bg-gray-100 text-gray-800 border border-gray-200">
-                  Oversight
-                </span>
-              </div>
-              <p className="text-sm text-gray-700 mb-3">
-                Every file undergoes a detailed monthly quality review:
-              </p>
-              <ul className="text-sm text-gray-700 space-y-1.5">
-                <li>• Spot-checks on high‑value and unusual transactions</li>
-                <li>• Balance sheet and P&amp;L reviewed down to the cent</li>
-                <li>• VAT-sensitive items flagged and categorised correctly</li>
-                <li>• Reports finalised only after variances and questions are resolved</li>
-              </ul>
-            </div>
-            {/* Step 3 */}
-            <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-lg font-semibold text-gray-900">Step 3: Monthly Delivery &amp; Insights</h3>
-                <span className="text-xs font-semibold px-2 py-1 rounded-full bg-gray-100 text-gray-800 border border-gray-200">
-                  Delivery
-                </span>
-              </div>
-              <p className="text-sm text-gray-700 mb-3">
-                You receive clean, decision-ready financials:
-              </p>
-              <ul className="text-sm text-gray-700 space-y-1.5">
-                <li>• Accurate balance sheet and income statement</li>
-                <li>• Basic VAT and tax-compliance sanity checks each month</li>
-                <li>• Simple management summary in plain English</li>
-                <li>• Optional call to walk through your numbers and trends</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES & PRICING (RAND) */}
-      <section id="pricing" className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center mb-10">
-            <h2 className="text-3xl font-semibold text-gray-900 mb-3">
-              Clear, South African Small-Business Pricing
-            </h2>
-            <p className="text-gray-600">
-              Local pricing in Rands, designed for South African businesses that want firm-level accuracy without big-firm retainers.
-            </p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {/* Starter */}
-            <div className="border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col">
-              <h3 className="text-xl font-semibold text-gray-900 mb-1">Starter</h3>
-              <p className="text-sm text-gray-500 mb-4">For early-stage businesses &amp; lean teams</p>
-              <div className="mb-4">
-                <div className="text-3xl font-bold text-gray-900">
-                  R2,500<span className="text-base font-medium text-gray-500">/month</span>
-                </div>
-                <div className="text-xs text-gray-500 mt-1">From price • Month-to-month • Excl. VAT if applicable</div>
-              </div>
-              <ul className="text-sm text-gray-700 space-y-2 mb-6 flex-1">
-                <li>• Up to <strong>R150k</strong> monthly expenses</li>
-                <li>• Monthly bank &amp; credit card reconciliations</li>
-                <li>• Categorisation of income &amp; expenses</li>
-                <li>• Monthly P&amp;L &amp; balance sheet, quality-checked</li>
-                <li>• Email support for simple questions</li>
-              </ul>
-              <a
-                href="#contact"
-                className="block text-center w-full py-2.5 rounded-md bg-black text-white text-sm font-semibold hover:bg-gray-900"
-              >
-                Start with Starter
-              </a>
-            </div>
-
-            {/* Growth */}
-            <div className="border-2 border-green-500 rounded-2xl p-6 shadow-md relative bg-green-50 flex flex-col">
-              <div className="absolute -top-3 right-4 text-xs font-semibold px-2 py-1 rounded-full bg-green-500 text-white shadow">
-                Most Popular
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-1">Growth</h3>
-              <p className="text-sm text-gray-600 mb-4">For established, growing small businesses</p>
-              <div className="mb-4">
-                <div className="text-3xl font-bold text-gray-900">
-                  R4,500<span className="text-base font-medium text-gray-500">/month</span>
-                </div>
-                <div className="text-xs text-gray-500 mt-1">From price • Month-to-month • Excl. VAT if applicable</div>
-              </div>
-              <ul className="text-sm text-gray-800 space-y-2 mb-6 flex-1">
-                <li>• Up to <strong>R500k</strong> monthly expenses</li>
-                <li>• Everything in Starter, plus:</li>
-                <li>• Accounts payable (AP) and receivable (AR) tracking</li>
-                <li>• Basic VAT tracking &amp; filing support</li>
-                <li>• Priority email support &amp; optional monthly check-in</li>
-              </ul>
-              <a
-                href="#contact"
-                className="block text-center w-full py-2.5 rounded-md bg-green-600 text-white text-sm font-semibold hover:bg-green-700"
-              >
-                Choose Growth
-              </a>
-            </div>
-
-            {/* Custom */}
-            <div className="border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col">
-              <h3 className="text-xl font-semibold text-gray-900 mb-1">Custom &amp; Catch-Up</h3>
-              <p className="text-sm text-gray-500 mb-4">For cleanup, migrations, and complex files</p>
-              <div className="mb-4">
-                <div className="text-2xl font-bold text-gray-900">
-                  From R1,800<span className="text-base font-medium text-gray-500">/month of cleanup</span>
-                </div>
-                <div className="text-xs text-gray-500 mt-1">One-time or short-term projects • Excl. VAT if applicable</div>
-              </div>
-              <ul className="text-sm text-gray-700 space-y-2 mb-6 flex-1">
-                <li>• Multi-month or multi-year historical cleanup</li>
-                <li>• Conversions into Xero or QuickBooks Online</li>
-                <li>• Diagnostics on messy or incomplete books</li>
-                <li>• Custom reporting &amp; advisory add-ons</li>
-                <li>• Scoped and quoted before any work begins</li>
-              </ul>
-              <a
-                href="#contact"
-                className="block text-center w-full py-2.5 rounded-md bg-black text-white text-sm font-semibold hover:bg-gray-900"
-              >
-                Request a Custom Quote
-              </a>
-            </div>
-          </div>
-          <p className="mt-4 text-xs text-gray-500 text-center">
-            Final pricing depends on transaction volume, complexity, and integrations. All pricing is in South African Rand (R). We’ll confirm everything on your strategy call before you commit.
-          </p>
-        </div>
-      </section>
-
-      {/* TRUST & SECURITY */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-semibold text-gray-900 mb-3">
-            Bank-Level Security. Professional Confidentiality.
-          </h2>
-          <p className="text-gray-600 mb-6">
-            Your financial data is sensitive. We treat it like it’s our own.
-          </p>
-          <div className="grid gap-6 md:grid-cols-3 text-left md:text-center">
-            <div>
-              <h3 className="text-sm font-semibold text-gray-900 mb-1">256-Bit Encryption</h3>
-              <p className="text-sm text-gray-600">
-                Data is transmitted over secure, encrypted connections with the same standards used by major financial institutions.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-sm font-semibold text-gray-900 mb-1">Role-Based Access</h3>
-              <p className="text-sm text-gray-600">
-                Students only access the information required to perform their work. Strict access controls and review procedures help protect client data.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-sm font-semibold text-gray-900 mb-1">Strict NDAs &amp; Protocols</h3>
-              <p className="text-sm text-gray-600">
-                Every team member signs a non-disclosure agreement. We follow documented procedures for handling, storing, and accessing your data.
-              </p>
-            </div>
-          </div>
-          <p className="mt-6 text-xs texWe work within Sage, Xero, QuickBooks Online, and Dextt-gray-500">
-            —platforms engineered with bank-grade security and compliance in mind.
-          </p>
-        </div>
-      </section>
-
-      {/* FOUNDER / SUPERVISOR BIO */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="grid gap-8 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-center">
-            <div>
-              <h2 className="text-3xl font-semibold text-gray-900 mb-3">
-                Student-Led Bookkeeping for South African Businesses
+        {/* HOW IT WORKS */}
+        <section id="how-it-works" className="bg-white py-16">
+          <div className="mx-auto max-w-6xl px-4">
+            <div className="mx-auto mb-10 max-w-2xl text-center">
+              <h2 className="mb-3 text-3xl font-semibold text-gray-900">
+                How it works
               </h2>
-              <p className="text-gray-700 mb-4 text-sm sm:text-base">
-                OMR Precision Books is built on a simple belief: strong accounting fundamentals, disciplined processes, and attention to detail create reliable bookkeeping.
-              </p>
-              <p className="text-gray-700 mb-4 text-sm sm:text-base">
-               Our processes are designed around the needs of South African small businesses, agencies, and growing companies, 
-                and e‑commerce clients. They personally design the workflows students use, review each month-end close, 
-                and are ultimately responsible for the accuracy of your numbers.
-              </p>
-              <p className="text-gray-700 text-sm sm:text-base">
-                You’re not simply hiring students. You’re partnering with a bookkeeping service that combines accounting knowledge, structured workflows, and quality controls 
-                to deliver reliable financial records at an affordable price.
+              <p className="text-gray-600">
+                A simple process with a written scope, so you always know what
+                happens next.
               </p>
             </div>
-            <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-sm text-gray-700">
-              <h3 className="text-base font-semibold text-gray-900 mb-2">Why a student-led model works</h3>
-              <ul className="space-y-2">
-                <li>• Students are selected based on academic performance and practical aptitude.</li>
-                <li>• They work from structured checklists, documented procedures, and standardized templates to ensure consistency.</li>
-                <li>• Their work is not final until it’s reviewed, challenged, and approved by a qualified supervisor.</li>
-                <li>• You benefit from lower costs without sacrificing the accuracy your business and tax practitioner depend on.</li>
-              </ul>
-            </div>
+            <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {steps.map((step, i) => (
+                <li
+                  key={step.title}
+                  className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm"
+                >
+                  <h3 className="mb-2 text-lg font-semibold text-gray-900">
+                    {i + 1}. {step.title}
+                  </h3>
+                  <p className="text-sm text-gray-700">{step.body}</p>
+                </li>
+              ))}
+            </ol>
+            {/* VERIFY: only publish this once you actually use a written
+                review checklist each month. */}
+            <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-gray-600">
+              Each month’s work is checked against a written checklist before it
+              reaches you: reconciliations agree to your bank statements,
+              unusual and duplicate items are queried, and reports are reviewed
+              for reasonableness. This is my own review. It is not an audit or
+              an independent review.
+            </p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* FAQ */}
-      <section id="faq" className="py-16 bg-gray-50">
-        <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl font-semibold text-gray-900 mb-6 text-center">
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-3">
-            <details className="bg-white border border-gray-200 rounded-lg p-4">
-              <summary className="cursor-pointer text-sm font-semibold text-gray-900">
-                How do I know my books will be accurate?
-              </summary>
-              <p className="mt-2 text-sm text-gray-700">
-                Students at OMR Precision Books perform the bookkeeping work using structured processes, checklists, and documented procedures. 
-                Standardized workflows help ensure transactions are categorized correctly and reconciliations are completed consistently.
-                
-              </p>
-              <p className="mt-2 text-sm text-gray-700">
-                Each month, unusual balances, unreconciled items, and significant transactions are reviewed as part of our quality-control process, 
-                and reports are only finalized once discrepancies have been addressed. Our structured review process helps maintain accuracy and consistency.
-              </p>
-            </details>
-
-            <details className="bg-white border border-gray-200 rounded-lg p-4">
-              <summary className="cursor-pointer text-sm font-semibold text-gray-900">
-                What accounting software do you work with?
-              </summary>
-              <p className="mt-2 text-sm text-gray-700">
-                We support Sage, Xero, and QuickBooks Online for bookkeeping, along with Dext for document capture and expense management.
-              </p>
-              <p className="mt-2 text-sm text-gray-700">
-                If you're using another accounting system, we can often migrate your data into Sage, Xero, or QuickBooks Online.
-              </p>
-            </details>
-
-            <details className="bg-white border border-gray-200 rounded-lg p-4">
-              <summary className="cursor-pointer text-sm font-semibold text-gray-900">
-                How do I send my receipts and documents?
-              </summary>
-              <p className="mt-2 text-sm text-gray-700">
-                Most South African clients either forward receipts directly into Dext or upload them to a secure shared folder. 
-                We’ll help you choose the simplest method for your team during onboarding.
-              </p>
-              <p className="mt-2 text-sm text-gray-700">
-                Once set up, you can drop receipts, invoices, and statements into one place and our team will take care of the rest.
-              </p>
-            </details>
-
-            <details className="bg-white border border-gray-200 rounded-lg p-4">
-              <summary className="cursor-pointer text-sm font-semibold text-gray-900">
-                What if I'm several months behind on my bookkeeping?
-              </summary>
-              <p className="mt-2 text-sm text-gray-700">
-                That’s common—and exactly what our Custom &amp; Catch‑Up tier is designed for. We’ll first run a quick diagnostic on your existing books 
-                (or lack thereof), estimate how many months and how much complexity is involved, and then give you a clear, fixed quote or a “from” range before we start.
-              </p>
-              <p className="mt-2 text-sm text-gray-700">
-                Once you’re caught up and clean, you can move onto a monthly Starter or Growth plan to keep everything accurate and current going forward.
-              </p>
-            </details>
-          </div>
-        </div>
-      </section>
-
-      {/* CONTACT / CTA FOOTER */}
-      <footer id="contact" className="bg-black text-white py-16">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center mb-8">
-            <h2 className="text-3xl font-semibold mb-3">
-              Book a Free 15-Minute Bookkeeping Strategy Call
+        {/* SCOPE */}
+        <section className="bg-gray-50 py-16">
+          <div className="mx-auto max-w-5xl px-4">
+            <h2 className="mb-8 text-center text-3xl font-semibold text-gray-900">
+              What’s included and what isn’t
             </h2>
-            <p className="text-sm text-gray-300">
-              Book a free strategy call using Calendly, or send us an enquiry and we'll get back to you.
-
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="rounded-xl border border-gray-200 bg-white p-6">
+                <h3 className="mb-3 text-lg font-semibold text-gray-900">
+                  Included
+                </h3>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  {included.map((item) => (
+                    <li key={item}>• {item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-xl border border-gray-200 bg-white p-6">
+                <h3 className="mb-3 text-lg font-semibold text-gray-900">
+                  Not offered
+                </h3>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  {notOffered.map((item) => (
+                    <li key={item}>• {item}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <p className="mt-6 text-center text-sm text-gray-600">
+              If you need something outside this scope, I’ll tell you and
+              suggest the type of professional to speak to.
             </p>
           </div>
+        </section>
 
-          <div className="max-w-xl mx-auto bg-gray-900 border border-gray-800 rounded-xl p-6 text-center">
-            <p className="text-gray-300 mb-6">
-               Book a free 15-minute bookkeeping strategy call, or contact us directly by email.
+        {/* PRICING */}
+        <section id="pricing" className="bg-white py-16">
+          <div className="mx-auto max-w-6xl px-4">
+            <div className="mx-auto mb-10 max-w-2xl text-center">
+              <h2 className="mb-3 text-3xl font-semibold text-gray-900">
+                Clear pricing in Rands
+              </h2>
+              <p className="text-gray-600">
+                Each plan has set limits, so you know what you’re paying for and
+                I know what I can deliver well.
+              </p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-3">
+              {plans.map((plan) => (
+                <div
+                  key={plan.name}
+                  className="flex flex-col rounded-2xl border border-gray-200 p-6 shadow-sm"
+                >
+                  <h3 className="mb-1 text-xl font-semibold text-gray-900">
+                    {plan.name}
+                  </h3>
+                  <p className="mb-4 text-sm text-gray-600">{plan.tagline}</p>
+                  <div className="mb-4">
+                    <div className="text-3xl font-bold text-gray-900">
+                      {plan.price}
+                      {plan.unit && (
+                        <span className="text-base font-medium text-gray-600">
+                          {plan.unit}
+                        </span>
+                      )}
+                    </div>
+                    <div className="mt-1 text-xs text-gray-600">{plan.meta}</div>
+                  </div>
+                  <ul className="mb-6 flex-1 space-y-2 text-sm text-gray-700">
+                    {plan.features.map((f) => (
+                      <li key={f}>• {f}</li>
+                    ))}
+                  </ul>
+                  <CallButton tone="onLight" className="w-full py-2.5 text-sm">
+                    {plan.cta}
+                  </CallButton>
+                </div>
+              ))}
+            </div>
+            {/* TODO: once you have confirmed your VAT status, add a plain line
+                such as “I am not VAT-registered, so no VAT is added to my fees.” */}
+            <p className="mx-auto mt-6 max-w-3xl text-center text-xs text-gray-600">
+              All prices are in South African Rand. Software subscriptions are
+              paid by you directly. Work above a plan’s limits, or outside its
+              scope, is quoted before it’s done. Everything is confirmed on your
+              intro call before you commit.
             </p>
-
-          <a
-          href="https://calendly.com/omrprecisionbooks/free-15-minute-bookkeeping-strategy-call"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-6 py-3 rounded-md bg-green-500 hover:bg-green-600 text-white font-semibold"
-          >
-          Book a Free Strategy Call
-          </a>
-
-          <p className="mt-6 text-sm text-gray-400">
-            Prefer email?
-          </p>
-
-          <a
-        href="mailto:omrprecisionbooks@gmail.com"
-          className="text-green-400 hover:underline"
-          >
-          omrprecisionbooks@gmail.com
-            </a>
           </div>
+        </section>
 
-          <div className="mt-10 pt-6 border-t border-gray-800 text-xs text-gray-500 flex flex-col sm:flex-row items-center justify-between space-y-2 sm:space-y-0">
-            <span>&copy; 2026 OMR Precision Books. Based in South Africa. All rights reserved.</span>
-            <span>-Student-Led • Sage • Xero • QuickBooks Online Specialists</span>
+        {/* ABOUT */}
+        <section id="about" className="bg-gray-50 py-16">
+          <div className="mx-auto max-w-3xl px-4">
+            <h2 className="mb-4 text-3xl font-semibold text-gray-900">
+              About Zuhayr
+            </h2>
+            {/* TODO: add a real photo of yourself here (next/image). */}
+            <div className="space-y-4 text-gray-700">
+              <p>
+                I’m Zuhayr Omar, the founder of OMR Precision Books. I’m a
+                third-year accounting student at the University of Cape Town,
+                currently completing Financial Reporting and Analyses.
+              </p>
+              {/* VERIFY: replace with your own real reason if it differs. */}
+              <p>
+                I started this business to give small businesses affordable,
+                well-organised bookkeeping while I build real, hands-on
+                experience alongside my studies.
+              </p>
+              <p>
+                I do the work myself. I’m not yet a qualified accountant and I
+                don’t hold a professional accounting designation, so I stay
+                within bookkeeping and tell you when something needs a
+                registered professional.
+              </p>
+              <p>
+                As OMR grows, I plan to bring on other accounting students, with
+                training and review. You’ll always be told before anyone else
+                works on your records.
+              </p>
+              <p className="text-sm text-gray-600">
+                OMR Precision Books is an independent business and is not
+                affiliated with or endorsed by the University of Cape Town.
+              </p>
+            </div>
           </div>
+        </section>
+
+        {/* SECURITY */}
+        <section className="bg-white py-16">
+          <div className="mx-auto max-w-4xl px-4">
+            <div className="mb-8 text-center">
+              <h2 className="mb-3 text-3xl font-semibold text-gray-900">
+                How I protect your information
+              </h2>
+              <p className="text-gray-600">
+                Your financial records are sensitive. These are the practices I
+                follow.
+              </p>
+            </div>
+            {/* VERIFY: every item below must be true on the day you publish.
+                Confirm POPIA wording with Phase 3 before going live. */}
+            <div className="grid gap-6 md:grid-cols-3">
+              <div>
+                <h3 className="mb-1 text-sm font-semibold text-gray-900">
+                  Access controls
+                </h3>
+                <p className="text-sm text-gray-600">
+                  Client files are kept in access-controlled storage that only I
+                  can open. Two-factor authentication is switched on for my
+                  email and accounting software.
+                </p>
+              </div>
+              <div>
+                <h3 className="mb-1 text-sm font-semibold text-gray-900">
+                  Never your passwords
+                </h3>
+                <p className="text-sm text-gray-600">
+                  I will never ask for your online banking password or card PIN.
+                  Documents reach me through the secure channel we agree during
+                  onboarding.
+                </p>
+              </div>
+              <div>
+                <h3 className="mb-1 text-sm font-semibold text-gray-900">
+                  Confidentiality
+                </h3>
+                <p className="text-sm text-gray-600">
+                  A confidentiality commitment is part of every engagement
+                  agreement, and I only collect the information needed to do the
+                  work.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section id="faq" className="bg-gray-50 py-16">
+          <div className="mx-auto max-w-3xl px-4">
+            <h2 className="mb-6 text-center text-3xl font-semibold text-gray-900">
+              Frequently asked questions
+            </h2>
+            <div className="space-y-3">
+              {faqs.map((item) => (
+                <details
+                  key={item.q}
+                  className="rounded-lg border border-gray-200 bg-white p-4"
+                >
+                  <summary
+                    className={`cursor-pointer text-sm font-semibold text-gray-900 ${focusLight}`}
+                  >
+                    {item.q}
+                  </summary>
+                  {item.a.map((para) => (
+                    <p key={para} className="mt-2 text-sm text-gray-700">
+                      {para}
+                    </p>
+                  ))}
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CONTACT / FINAL CTA */}
+        <section id="contact" className="bg-black py-16 text-white">
+          <div className="mx-auto max-w-4xl px-4">
+            <div className="mx-auto mb-8 max-w-2xl text-center">
+              <h2 className="mb-3 text-balance text-3xl font-semibold">
+                Book a free{" "}
+                <span className="whitespace-nowrap">15-minute</span> intro call
+              </h2>
+              <p className="text-sm text-gray-300">
+                We’ll talk about your business and see whether we’re a good fit.
+              </p>
+            </div>
+            <div className="mx-auto max-w-xl rounded-xl border border-gray-800 bg-gray-900 p-6 text-center">
+              <CallButton tone="onDark">Book a free intro call</CallButton>
+              <p className="mt-6 text-sm text-gray-300">Prefer email?</p>
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className={`text-green-400 hover:underline ${focusDark}`}
+              >
+                {CONTACT_EMAIL}
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* FOOTER */}
+      <footer className="bg-black pb-10 text-gray-400">
+        <div className="mx-auto flex max-w-4xl flex-col items-center justify-between space-y-2 border-t border-gray-800 px-4 pt-6 text-center text-xs sm:text-left sm:flex-row sm:space-y-0">
+          <span>
+            &copy; {year} OMR Precision Books. Based in Cape Town, serving
+            clients across South Africa.
+          </span>
+          {/* TODO: add Privacy and Terms links here once those pages exist. */}
+          <span>Founder-operated. Not affiliated with UCT.</span>
         </div>
       </footer>
     </div>
